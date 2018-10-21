@@ -4,7 +4,7 @@
 
     <groupId>com.kapuscinski.gallery</groupId>
     <artifactId>jand-a-gallery</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>war</packaging>
     <name>Jand A Gallery</name>
 

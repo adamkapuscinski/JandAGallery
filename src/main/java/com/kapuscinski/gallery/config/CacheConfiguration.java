@@ -38,6 +38,7 @@ public class CacheConfiguration {
             cm.createCache(com.kapuscinski.gallery.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.kapuscinski.gallery.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.kapuscinski.gallery.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.kapuscinski.gallery.domain.Photo.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

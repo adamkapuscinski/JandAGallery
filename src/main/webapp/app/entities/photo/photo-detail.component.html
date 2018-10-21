@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="photo">
+            <h2><span jhiTranslate="jandAGalleryApp.photo.detail.title">Photo</span> {{photo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jandAGalleryApp.photo.category">Category</span></dt>
+                <dd>
+                    <span>{{photo.category}}</span>
+                </dd>
+                <dt><span jhiTranslate="jandAGalleryApp.photo.tag">Tag</span></dt>
+                <dd>
+                    <span>{{photo.tag}}</span>
+                </dd>
+                <dt><span jhiTranslate="jandAGalleryApp.photo.photography">Photography</span></dt>
+                <dd>
+                    <div *ngIf="photo.photography">
+                        <a (click)="openFile(photo.photographyContentType, photo.photography)">
+                            <img [src]="'data:' + photo.photographyContentType + ';base64,' + photo.photography" style="max-width: 100%;" alt="photo image"/>
+                        </a>
+                        {{photo.photographyContentType}}, {{byteSize(photo.photography)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jandAGalleryApp.photo.priority">Priority</span></dt>
+                <dd>
+                    <span>{{photo.priority}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/photo', photo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

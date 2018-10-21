@@ -1,0 +1,14 @@
+entity Photo {
+ 	category String required
+    tag String
+    photography ImageBlob required
+    priority Integer min(1) max(100)
+}
+
+filter *
+
+// Set pagination options
+paginate Photo with infinite-scroll
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceClass

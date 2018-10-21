@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-photo-heading" jhiTranslate="jandAGalleryApp.photo.home.createOrEditLabel">Create or edit a Photo</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!photo.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="photo.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandAGalleryApp.photo.category" for="field_category">Category</label>
+                    <input type="text" class="form-control" name="category" id="field_category"
+                        [(ngModel)]="photo.category" required/>
+                    <div [hidden]="!(editForm.controls.category?.dirty && editForm.controls.category?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.category?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandAGalleryApp.photo.tag" for="field_tag">Tag</label>
+                    <input type="text" class="form-control" name="tag" id="field_tag"
+                        [(ngModel)]="photo.tag" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandAGalleryApp.photo.photography" for="field_photography">Photography</label>
+                    <div>
+                        <img [src]="'data:' + photo.photographyContentType + ';base64,' + photo.photography" style="max-height: 100px;" *ngIf="photo.photography" alt="photo image"/>
+                        <div *ngIf="photo.photography" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{photo.photographyContentType}}, {{byteSize(photo.photography)}}</span>
+                            <button type="button" (click)="clearInputImage('photography', 'photographyContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_photography" (change)="setFileData($event, photo, 'photography', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="photography" id="field_photography"
+                        [(ngModel)]="photo.photography" required/>
+                    <input type="hidden" class="form-control" name="photographyContentType" id="field_photographyContentType"
+                        [(ngModel)]="photo.photographyContentType" />
+                    <div [hidden]="!(editForm.controls.photography?.dirty && editForm.controls.photography?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.photography?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandAGalleryApp.photo.priority" for="field_priority">Priority</label>
+                    <input type="number" class="form-control" name="priority" id="field_priority"
+                        [(ngModel)]="photo.priority" min="1" jhiMin="1" max="100" jhiMax="100"/>
+                    <div [hidden]="!(editForm.controls.priority?.dirty && editForm.controls.priority?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.priority?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.priority?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 100 }">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.priority?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
