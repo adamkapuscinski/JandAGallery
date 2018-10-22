@@ -11,6 +11,7 @@ import { PhotoDetailComponent } from './photo-detail.component';
 import { PhotoUpdateComponent } from './photo-update.component';
 import { PhotoDeletePopupComponent } from './photo-delete-dialog.component';
 import { IPhoto } from 'app/shared/model/photo.model';
+import { PhotoExtendedComponent } from 'app/entities/photo/extended/photo-extended.component';
 
 @Injectable({ providedIn: 'root' })
 export class PhotoResolve implements Resolve<IPhoto> {
@@ -65,6 +66,15 @@ export const photoRoute: Routes = [
         resolve: {
             photo: PhotoResolve
         },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jandAGalleryApp.photo.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'photo-extended',
+        component: PhotoExtendedComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'jandAGalleryApp.photo.home.title'

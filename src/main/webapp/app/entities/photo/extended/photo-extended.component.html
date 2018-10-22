@@ -1,0 +1,5 @@
+<div class="card-columns" infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="4">
+    <div class="card" *ngFor="let photo of photos ;trackBy: trackId">
+      <img class="card-img-top" [src]="'data:' + photo.photographyContentType + ';base64,' + photo.photography" alt="Card image cap">
+    </div>
+</div>
