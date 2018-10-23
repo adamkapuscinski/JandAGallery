@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PhotoComponent } from 'app/entities/photo/photo.component';
-import { PhotoService } from 'app/entities/photo/photo.service';
 
 import { Principal } from 'app/core';
 import { JhiParseLinks } from 'ng-jhipster/src/service/parse-links.service';
@@ -9,6 +8,7 @@ import { JhiDataUtils } from 'ng-jhipster/src/service/data-util.service';
 import { JhiAlertService } from 'ng-jhipster/src/service/alert.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Photo } from 'app/shared/model/photo.model';
+import { PhotoService } from 'app/entities/photo/photo.service';
 
 @Component({
     selector: 'jhi-photo-extended',

@@ -76,10 +76,8 @@ export const photoRoute: Routes = [
         path: 'photo-extended',
         component: PhotoExtendedComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'jandAGalleryApp.photo.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        }
     }
 ];
 
