@@ -8,6 +8,7 @@ import { Principal } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { PhotoService } from './photo.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'jhi-photo',
@@ -24,6 +25,7 @@ export class PhotoComponent implements OnInit, OnDestroy {
     queryCount: any;
     reverse: any;
     totalItems: number;
+    loader = false;
 
     constructor(
         private photoService: PhotoService,
@@ -31,7 +33,8 @@ export class PhotoComponent implements OnInit, OnDestroy {
         private dataUtils: JhiDataUtils,
         private eventManager: JhiEventManager,
         private parseLinks: JhiParseLinks,
-        private principal: Principal
+        private principal: Principal,
+        private modalService: NgbModal
     ) {
         this.photos = [];
         this.itemsPerPage = ITEMS_PER_PAGE;
@@ -44,6 +47,7 @@ export class PhotoComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
+        this.loader = true;
         this.photoService
             .query({
                 page: this.page,
@@ -104,6 +108,7 @@ export class PhotoComponent implements OnInit, OnDestroy {
     }
 
     private paginatePhotos(data: IPhoto[], headers: HttpHeaders) {
+        this.loader = false;
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
         for (let i = 0; i < data.length; i++) {
@@ -112,6 +117,7 @@ export class PhotoComponent implements OnInit, OnDestroy {
     }
 
     private onError(errorMessage: string) {
+        this.loader = false;
         this.jhiAlertService.error(errorMessage, null, null);
     }
 }
