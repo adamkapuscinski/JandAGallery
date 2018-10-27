@@ -33,6 +33,8 @@
     "clientFramework": "angularX",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "5.5.0",
-    "jwtSecretKey": "YTYzM2Y1ZmM4YmFiNTg4NWFmNTFmZmIzMDBiMWE1YjBkZDA0ZTg2ZDNlZTQzMzAzNDUzNDg5MTM0MWEyOWYwNDliYTJiMzQ1Nzk2ZWFkZWVlZjAwYzIwODdlODA2NTI3ZjRiZjEzODU3YjhhMzMwYjY3NThiZjIyYTdiNGNjZDE="
+    "jwtSecretKey": "YTYzM2Y1ZmM4YmFiNTg4NWFmNTFmZmIzMDBiMWE1YjBkZDA0ZTg2ZDNlZTQzMzAzNDUzNDg5MTM0MWEyOWYwNDliYTJiMzQ1Nzk2ZWFkZWVlZjAwYzIwODdlODA2NTI3ZjRiZjEzODU3YjhhMzMwYjY3NThiZjIyYTdiNGNjZDE=",
+    "herokuAppName": "young-scrubland-64927",
+    "herokuDeployType": "jar"
   }
 }
