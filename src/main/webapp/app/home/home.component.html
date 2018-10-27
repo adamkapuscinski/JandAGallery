@@ -8,36 +8,41 @@
     </div>
 </div>
 
-<div class="container mt-3">
-    <div class="media p-3">
-        <img src="../../content/images/IMG_20180905_160728.jpg" alt="Justa" class="mr-3 mt-3 rounded-circle" style="width:120px;">
-        <div class="media-body m-4">
-            <h4>Justyna</h4>
-            <p>Hej miśki! Poniżej znajdziecie odnośniki do galerii :)</p>
-            <h5 class="text-muted">„Życie jest piękne, gdy żyć się umie. Gdy jedno serce drugie rozumie.”</h5>
-        </div>
-    </div>
-</div>
-<div class="container mt-3">
-    <div class="media p-3">
-        <div class="media-body m-4">
-            <h4 class="text">Adam</h4>
-            <p>Witajcie! Super, że wpadliście. Ta strona jest pamiątką naszych wspólnie spędzonych dni. Jeżeli macie ochotę, zapraszamy do oglądania zdjęć.</p>
-            <h5 class="text-muted">„Dotąd dwoje, choć jeszcze nie jedno. Odtąd jedno, choć nadal dwoje.” <b>JP II</b></h5>
-        </div>
-        <img src="../../content/images/13920803_1187481847959623_4644805207643714385_n.jpg" alt="Adam" class="mr-3 mt-3 rounded-circle" style="width:120px;">
-    </div>
-</div>
-<p-carousel circular="circular" autoplayInterval="10000" numVisible="1" [value]="carouselPhotos">
-    <ng-template let-carouselPhoto pTemplate="item">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img routerLink="photo-extended" [src]="'../../content/images/' + carouselPhoto.src" class="d-block w-100">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>{{carouselPhoto.header}}</h1>
-                    <h4>{{carouselPhoto.paragraph}}</h4>
-                </div>
+<div class="p-5">
+    <div class="container border rounded mt-3">
+        <div class="media p-3">
+            <p class="text-center">
+                <img src="../../content/images/IMG_20180905_160728.jpg" alt="Justa" class="mr-3 mt-3 rounded-circle photo-style">
+            </p>
+            <div class="media-body m-4">
+                <h4>Justyna</h4>
+                <p>Hej miśki! Poniżej znajdziecie odnośniki do galerii :)</p>
+                <h5 class="text-muted">„Życie jest piękne, gdy żyć się umie. Gdy jedno serce drugie rozumie.”</h5>
             </div>
         </div>
+    </div>
+    <div class="container border rounded mt-3">
+        <div class="media p-3">
+            <p class="text-center" id="before-content-photo">
+                <img src="../../content/images/13920803_1187481847959623_4644805207643714385_n.jpg" alt="Adam" class="mr-3 mt-3 rounded-circle photo-style">
+            </p>
+            <div class="media-body m-4">
+                <h4 class="text">Adam</h4>
+                <p>Witajcie! Super, że wpadliście. Ta strona jest pamiątką naszych wspólnie spędzonych dni. Jeżeli macie ochotę, zapraszamy do oglądania zdjęć.</p>
+                <h5 class="text-muted">„Dotąd dwoje, choć jeszcze nie jedno. Odtąd jedno, choć nadal dwoje.” <b>JP II</b></h5>
+            </div>
+            <p class="text-center" id="after-content-photo">
+                <img src="../../content/images/13920803_1187481847959623_4644805207643714385_n.jpg" alt="Adam" class="mr-3 mt-3 rounded-circle photo-style">
+            </p>
+        </div>
+    </div>
+</div>
+<ngb-carousel *ngIf="carouselPhotos" [interval]="3000">
+    <ng-template *ngFor="let carouselPhoto of carouselPhotos" ngbSlide>
+        <img routerLink="photo-extended" [src]="'../../content/images/' + carouselPhoto.src" class="d-block w-100">
+        <div class="carousel-caption d-none d-md-block">
+            <h1>{{carouselPhoto.header}}</h1>
+            <h4>{{carouselPhoto.paragraph}}</h4>
+        </div>
     </ng-template>
-</p-carousel>
+</ngb-carousel>

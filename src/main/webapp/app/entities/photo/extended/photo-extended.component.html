@@ -7,28 +7,7 @@
     </div>
 </div>
 <div *ngIf="loader" class="loader"></div>
-<!-- <div id="myModal" class="modal">
-    <span class="close cursor" onclick="closeModal()">&times;</span>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" *ngFor="let photo of photos ;trackBy: trackId" [ngClass]="{'active' : trackId===1}">
-            <img class="d-block w-100" [src]="'data:' + photo.photographyContentType + ';base64,' + photo.photography">
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-</div> -->
 <ng-template #gallery let-c="close()" let-d="dismiss()">
-    <div class="modal-header">
-        <span class="close cursor" (click)="c">&times;</span>
-    </div>
     <div class="modal-body">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">

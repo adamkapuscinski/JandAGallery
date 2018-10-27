@@ -21,3 +21,44 @@ Main page styles
         background-size: contain;
     }
 }
+@media screen and (max-width: 768px) {
+    .media {
+        display: unset !important;
+    }
+    #before-content-photo {
+        visibility: visible;
+    }
+    #after-content-photo {
+        visibility: hidden;
+        height: 0px;
+    }
+}
+@media screen and (min-width: 769px) {
+    #before-content-photo {
+        visibility: hidden;
+        width: 0px;
+    }
+    #after-content-photo {
+        visibility: visible;
+    }
+}
+.photo-style {
+    width: 120px;
+}
+.carousel-item {
+    /* Force to always be block */
+    display: block !important;
+    z-index: 1;
+    position: absolute;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.2s;
+    visibility: hidden;
+}
+
+.carousel-item.active {
+    position: relative;
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+}
